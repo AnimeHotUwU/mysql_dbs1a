@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SQL databáza - Papiernictvo a horské chaty</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        header {
+            background-color: #234f52;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        header h1 {
+            margin: 0 0 10px 0;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 17px;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: #234f52;
+            margin-top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th {
+            background-color: #234f52;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 11px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f0f7f7;
+        }
+
+        .cena {
+            font-weight: bold;
+        }
+
+        button {
+            background-color: #234f52;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background-color: #183a3c;
+        }
+
+        .uloha {
+            border-left: 5px solid #234f52;
+        }
+
+        .odpoved {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9f5ea;
+            border-radius: 6px;
+        }
+
+        pre {
+            background-color: #20252b;
+            color: #f1f1f1;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>SQL databáza</h1>
+    <p>Papiernictvo a horské chaty v Tatrách</p>
+</header>
+
+
+<main>
+
+    <!-- TABUĽKA PAPIERNICTVO -->
+
+    <section>
+        <h2>Ceny v papiernictve</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Názov tovaru</th>
+                    <th>Kategória</th>
+                    <th>Cena (€)</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Zošit A5</td>
+                    <td>Zošity</td>
+                    <td class="cena">1,50 €</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Zošit A4</td>
+                    <td>Zošity</td>
+                    <td class="cena">2,50 €</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>Pero modré</td>
+                    <td>Písacie potreby</td>
+                    <td class="cena">1,20 €</td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>Ceruzka</td>
+                    <td>Písacie potreby</td>
+                    <td class="cena">0,80 €</td>
+                </tr>
+
+                <tr>
+                    <td>5</td>
+                    <td>Guma</td>
+                    <td>Písacie potreby</td>
+                    <td class="cena">0,70 €</td>
+                </tr>
+
+                <tr>
+                    <td>6</td>
+                    <td>Pravítko 30 cm</td>
+                    <td>Pomôcky</td>
+                    <td class="cena">1,50 €</td>
+                </tr>
+
+                <tr>
+                    <td>7</td>
+                    <td>Farebné ceruzky</td>
+                    <td>Kreslenie</td>
+                    <td class="cena">4,50 €</td>
+                </tr>
+
+                <tr>
+                    <td>8</td>
+                    <td>Vodové farby</td>
+                    <td>Kreslenie</td>
+                    <td class="cena">3,90 €</td>
+                </tr>
+
+                <tr>
+                    <td>9</td>
+                    <td>Lepidlo</td>
+                    <td>Lepenie</td>
+                    <td class="cena">2,20 €</td>
+                </tr>
+
+                <tr>
+                    <td>10</td>
+                    <td>Nožnice</td>
+                    <td>Pomôcky</td>
+                    <td class="cena">3,50 €</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+    <!-- TABUĽKA HORSKÉ CHATY -->
+
+    <section>
+        <h2>Horské chaty v Tatrách</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Názov chaty</th>
+                    <th>Pohorie</th>
+                    <th>Nadmorská výška</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Chata pod Rysmi</td>
+                    <td>Vysoké Tatry</td>
+                    <td>2250 m</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Téryho chata</td>
+                    <td>Vysoké Tatry</td>
+                    <td>2015 m</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>Zamkovského chata</td>
+                    <td>Vysoké Tatry</td>
+                    <td>1475 m</td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>Zbojnícka chata</td>
+                    <td>Vysoké Tatry</td>
+                    <td>1960 m</td>
+                </tr>
+
+                <tr>
+                    <td>5</td>
+                    <td>Skalnatá chata</td>
+                    <td>Vysoké Tatry</td>
+                    <td>1751 m</td>
+                </tr>
+
+                <tr>
+                    <td>6</td>
+                    <td>Sliezsky dom</td>
+                    <td>Vysoké Tatry</td>
+                    <td>1670 m</td>
+                </tr>
+
+                <tr>
+                    <td>7</td>
+                    <td>Chata pri Zelenom plese</td>
+                    <td>Vysoké Tatry</td>
+                    <td>1551 m</td>
+                </tr>
+
+                <tr>
+                    <td>8</td>
+                    <td>Rainerova útulňa</td>
+                    <td>Vysoké Tatry</td>
+                    <td>1301 m</td>
+                </tr>
+
+                <tr>
+                    <td>9</td>
+                    <td>Bilíkova chata</td>
+                    <td>Vysoké Tatry</td>
+                    <td>1255 m</td>
+                </tr>
+
+                <tr>
+                    <td>10</td>
+                    <td>Chata Plesnivec</td>
+                    <td>Belianske Tatry</td>
+                    <td>1290 m</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+    <!-- STIAHNUTIE SQL -->
+
+    <section>
+        <h2>SQL kód</h2>
+
+        <p>
+            Kompletný SQL kód databázy si môžete stiahnuť
+            pomocou tlačidla nižšie.
+        </p>
+
+        <button onclick="stiahniSQL()">
+            Stiahnuť SQL kód
+        </button>
+    </section>
+
+
+    <!-- ÚLOHA -->
+
+    <section class="uloha">
+
+        <h2>Úloha pre pozorovateľov</h2>
+
+        <p>
+            <strong>Úloha:</strong>
+            Pomocou SQL príkazu pridaj do tabuľky
+            <strong>papiernictvo</strong> nový tovar:
+        </p>
+
+        <ul>
+            <li>ID: <strong>11</strong></li>
+            <li>Názov: <strong>Obálka</strong></li>
+            <li>Kategória: <strong>Papiernictvo</strong></li>
+            <li>Cena: <strong>0,50 €</strong></li>
+        </ul>
+
+        <button onclick="zobrazOdpoved()">
+            Odkryť odpoveď
+        </button>
+
+        <div id="odpoved" class="odpoved">
+
+<pre>INSERT INTO papiernictvo
+(id, nazov_tovaru, kategoria, cena_eur)
+VALUES
+(11, 'Obálka', 'Papiernictvo', 0.50);</pre>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    SQL projekt – Papiernictvo a horské chaty
+</footer>
+
+
+<script>
+
+function stiahniSQL() {
+
+    const sqlKod = `USE moja_databaza;
+
+CREATE TABLE papiernictvo (
+    id INT PRIMARY KEY,
+    nazov_tovaru VARCHAR(100) NOT NULL,
+    kategoria VARCHAR(50) NOT NULL,
+    cena_eur DECIMAL(6,2) NOT NULL
+);
+
+INSERT INTO papiernictvo
+(id, nazov_tovaru, kategoria, cena_eur)
+VALUES
+(1, 'Zošit A5', 'Zošity', 1.50),
+(2, 'Zošit A4', 'Zošity', 2.50),
+(3, 'Pero modré', 'Písacie potreby', 1.20),
+(4, 'Ceruzka', 'Písacie potreby', 0.80),
+(5, 'Guma', 'Písacie potreby', 0.70),
+(6, 'Pravítko 30 cm', 'Pomôcky', 1.50),
+(7, 'Farebné ceruzky', 'Kreslenie', 4.50),
+(8, 'Vodové farby', 'Kreslenie', 3.90),
+(9, 'Lepidlo', 'Lepenie', 2.20),
+(10, 'Nožnice', 'Pomôcky', 3.50);
+
+
+CREATE TABLE horske_chaty (
+    id INT PRIMARY KEY,
+    nazov_chaty VARCHAR(100) NOT NULL,
+    pohorie VARCHAR(50) NOT NULL,
+    nadmorska_vyska_m INT NOT NULL
+);
+
+INSERT INTO horske_chaty
+(id, nazov_chaty, pohorie, nadmorska_vyska_m)
+VALUES
+(1, 'Chata pod Rysmi', 'Vysoké Tatry', 2250),
+(2, 'Téryho chata', 'Vysoké Tatry', 2015),
+(3, 'Zamkovského chata', 'Vysoké Tatry', 1475),
+(4, 'Zbojnícka chata', 'Vysoké Tatry', 1960),
+(5, 'Skalnatá chata', 'Vysoké Tatry', 1751),
+(6, 'Sliezsky dom', 'Vysoké Tatry', 1670),
+(7, 'Chata pri Zelenom plese', 'Vysoké Tatry', 1551),
+(8, 'Rainerova útulňa', 'Vysoké Tatry', 1301),
+(9, 'Bilíkova chata', 'Vysoké Tatry', 1255),
+(10, 'Chata Plesnivec', 'Belianske Tatry', 1290);`;
+
+    const subor = new Blob([sqlKod], {
+        type: "text/sql;charset=utf-8"
+    });
+
+    const odkaz = document.createElement("a");
+
+    odkaz.href = URL.createObjectURL(subor);
+    odkaz.download = "databaza.sql";
+
+    odkaz.click();
+
+    URL.revokeObjectURL(odkaz.href);
+}
+
+
+function zobrazOdpoved() {
+
+    const odpoved = document.getElementById("odpoved");
+
+    if (odpoved.style.display === "block") {
+        odpoved.style.display = "none";
+    } else {
+        odpoved.style.display = "block";
+    }
+
+}
+
+</script>
+
+</body>
+</html>
